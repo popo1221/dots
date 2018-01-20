@@ -8,6 +8,17 @@ const download = require('download')
 //     'accept-encoding': 'gzip,deflate'
 // }
 
-module.exports = async (url, filepath) => {
-    await download(url, filepath, { timeout: 30 * 1000, retries: 3, extract: true })
+module.exports = async (url, filepath, filename) => {
+    console.log('start download....')
+    await download(
+        url, 
+        filepath, 
+        { 
+            filename, 
+            timeout: 30 * 1000, 
+            retries: 3, 
+            // extract: true 
+        }
+    )
+    console.log(`${filename} downloaded`)
 }

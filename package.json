@@ -19,6 +19,7 @@
         "bluebird": "^3.5.1",
         "dhtspider": "^0.1.0",
         "download": "^6.2.5",
+        "elasticsearch": "^14.0.0",
         "fs-extra": "^5.0.0",
         "magnet-to-torrent": "^0.1.2",
         "mongoose": "^5.0.0",

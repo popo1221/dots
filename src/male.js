@@ -9,6 +9,10 @@ const logger = require('./common/logger')
 const downloadTorrent = require('./common/download')
 const failureInfohash = path.join(__dirname, '/../log/failureInfohash.txt')
 
+magnetToTorrent.addService((hash) => `http://itorrents.org/torrent/${hash}.torrent`)
+magnetToTorrent.addService((hash) => `http://btcache.me/torrent/${hash}`)
+
+
 const runMale = async () => {
     // 随机取出并且删除一个infohash
     let hash = await infohash.spop()
@@ -20,9 +24,9 @@ const runMale = async () => {
 
     try {
         const url = await magnetToTorrent.getLink(`magnet:?xt=urn:btih:${hash}`)
-        console.log(`find torrent url ==> ${url}`)
-        const filepath = path.join(__dirname, `/../.temp/${hash}.torrent`)
-        await downloadTorrent(url, filepath)
+        const filepath = path.join(__dirname, '/../.temp/')
+        console.log(`find torrent url ==> ${url}, filepath ==> ${filepath}`)
+        await downloadTorrent(url, filepath, `${hash}.torrent`)
     } catch(err) {
         console.log(err)
         failure(hash)

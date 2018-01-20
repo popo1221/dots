@@ -7,47 +7,47 @@ const Resource = new Schema({
     _id: { type: String, required: true },
 
     // name 资源名称
-    n: { type: String, required: true },
+    name: { type: String, required: true },
 
     // type 资源类型
-    t: {type: String },
+    type: {type: String },
 
     // size 资源总大小
-    s: {type: Number },
+    size: {type: Number },
 
     // files 包含文件
-    f: [
+    files: [
         {
             _id: false,
             // name 文件名
-            n: { type: String },
+            name: { type: String },
             // size 文件大小
-            s: { type: Number, default: 0 }
+            size: { type: Number, default: 0 }
         }
     ],
 
     // hot 最新热度值
-    h: { type: Number, default: 0 },
+    hot: { type: Number, default: 0 },
 
     // hots 最近2周热度值, key:value 例如: 12-20:1000
-    hs: [
+    hots: [
         {
             _id: false,
             // 时间
-            t: { type: String },
+            time: { type: String },
             // 热度值
-            v: { type: Number, default: 0 }
+            value: { type: Number, default: 0 }
         }
     ],
 
     // createDate 收录时间
-    c: { type: Date, default: Date.now },
+    createdDate: { type: Date, default: Date.now },
 
     // updateDate 更新时间
-    u: { type: Date, default: Date.now },
+    updatedDate: { type: Date, default: Date.now },
 
     // disable 是否被禁用
-    d: { type: Boolean },
+    disable: { type: Boolean },
 
 })
 
